@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{%static 'images/logo.png'%}" rel="icon">
+        <title>{% block title %}{% endblock %}Galaxy-Chat</title>
+
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <style>
+            body{
+                width:100%;
+                height:100vh;
+                
+                background: url("{%static 'images/meteroide.gif'%}") top right;
+                background-size: cover;
+                position: relative;
+               
+              }
+          
+              @media (min-width: 1024px) {
+                body {
+
+                    background-attachment: fixed;
+                    
+                }
+            }
+            .messages {
+                height: 400px;
+                overflow-y: auto;
+            }
+            #preloader {
+                position: fixed;
+                inset: 0;
+                z-index: 999999;
+                overflow: hidden;
+                background: #000000;
+                transition: all 0.6s ease-out;
+              }
+              
+              #preloader:before {
+                content: "";
+                position: fixed;
+                top: calc(50% - 30px);
+                left: calc(50% - 30px);
+                background: url("{%static 'images/logo.png'%}") top right;
+                background-size:80px;
+                background-repeat:no-repeat;
+              
+                border: 6px solid transparent;
+                border-radius: 50%;
+                width: 100px;
+                height: 100px;
+                -webkit-animation: animate-preloader 1.5s linear infinite;
+                animation: animate-preloader 1.5s linear infinite;
+              }
+              
+              @-webkit-keyframes animate-preloader {
+                0% {
+                  transform: rotate(0deg);
+                }
+              
+                100% {
+                  transform: rotate(360deg);
+                }
+              }
+              
+              @keyframes animate-preloader {
+                0% {
+                  transform: rotate(0deg);
+                }
+              
+                100% {
+                  transform: rotate(360deg);
+                }
+              }
+              
+              /*--------------------------------------------------------------
+              # Disable aos animation delay on mobile devices
+              --------------------------------------------------------------*/
+              @media screen and (max-width: 768px) {
+                [data-aos-delay] {
+                  transition-delay: 0 !important;
+                }
+              }
+        </style>
+    </head>
+
+    <body class="bg-teal-600">
+        <nav class="flex items-center justify-between px-4 py-6 bg-black-200">
+            <div>
+                <a href="/" class="text-xl text-white">Galaxy-Chat</a>
+            </div>
+
+            <div class="flex items-center space-x-4">
+                {% if request.user.is_authenticated %}
+          
+
+
+                
+                    
+               
+
+                    <a href="/signout" class="px-5 py-3 rounded-xl text-white bg-black-600 hover:bg-red-700">Log out</a>
+                    <a href="/home" class="text-white hover:text-gray-200 ">Home</a>
+                {% else %}
+                    <a href="/login/" class="text-white hover:text-gray-200">Log in</a>
+            
+                    <a href="/signup/" class="px-5 py-3 rounded-xl text-white bg-teal-600 hover:bg-teal-700">Sign up</a>
+                {% endif %}
+            </div>
+        </nav>
+
+        {% block content %}
+        {% endblock %}
+
+        {% block scripts %}
+        {% endblock %}
+    </body>
+
+</html>

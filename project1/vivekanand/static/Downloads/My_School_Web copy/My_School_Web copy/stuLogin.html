@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Student Login</title>
+
+    <!-- Fav Icon is here -->
+  <link rel="shortcut icon" href="imagesSchool/shchool Logo.png" type="images/x-icon" />
+
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="details.css">
+    <link rel="stylesheet" href="style2.css">
+  </head>
+  <body>
+    <!-- Navbar -->
+    <!-- Navbar -->
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" id="navbar-brand" href="index.html"><img class="rounded-circle" height="60px" src="imagesSchool/logo2.jpg" alt="Vivekanand VIdhya Vihar"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="event.html">Events</a>
+          </li>
+          <!-- Dropdown for Login -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Login
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="stuLogin.html">Student</a></li>
+              <li><a class="dropdown-item" href="teacherLogin.html">Teacher</a></li>
+              <li><a class="dropdown-item" href="directorLogin.html">Director</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+    <div class="container mt-5 pt-5">
+      <h1 class="formHeading ">Student Login</h1>
+
+      <!-- Login Form -->
+      <div id="loginForm">
+        <label for="studentId">Enter Student ID:</label>
+        <input
+          type="text"
+          id="studentId"
+          name="studentId"
+          placeholder="Enter your Student ID"
+        />
+
+        <label for="password">Enter Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+        />
+
+        <div class="button-container">
+          <button type="button" class="stbutton" onclick="login()">Login</button>
+        </div>
+
+        <p>
+          <span
+            class="forgot-password"
+            onclick="alert('Forgot Password feature not implemented yet!')"
+            >Forgot Password?</span
+          >
+        </p>
+      </div>
+
+       <!-- Display student details after login -->
+       <div id="studentDetails" class="student-details" style="display: none">
+        <h2 class="mt-4">Student Details</h2>
+        <p><strong>Name:</strong> <span id="detailName"></span></p>
+        <p><strong>Father Name:</strong> <span id="detailFatherName"></span></p>
+        <p>
+          <strong>Contact Number:</strong> <span id="detailContactNo"></span>
+        </p>
+        <p><strong>School:</strong> <span id="detailSchool"></span></p>
+        <p><strong>Class:</strong> <span id="detailClass"></span></p>
+        <p><strong>Subjects:</strong> <span id="detailSubjects"></span></p>
+        <p><strong>Roll Number:</strong> <span id="detailRollNo"></span></p>
+        <p><strong>Result:</strong> <span id="detailResult"></span></p>
+
+        <div class="fees-section">
+          <p><strong>Fees Paid:</strong> ₹<span id="detailFeesPaid"></span></p>
+          <p><strong>Dues:</strong> ₹<span id="detailDues"></span></p>
+          <p>
+            <strong>Total Fees:</strong> ₹<span id="detailTotalFees"></span>
+          </p>
+        </div>
+
+        <!-- Logout Button -->
+        <div class="button-container" style="margin-top: 20px">
+          <button onclick="logout()">Logout</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+        const studentsData = {
+    "S123": {
+        name: "John Doe",
+        fatherName: "Martin Doe",
+        contactNo: "123456787890",
+        school: "ABC School",
+        class: "10th Grade",
+        subjects: "Math, Science, English, History",
+        rollNo: "12345",
+        result: "Pass",
+        feesPaid: 5000,
+        dues: 1000,
+        password: "password123"
+    },
+    "S124": {
+        name: "Jane Smith",
+        fatherName: "Alice Smith",
+        contactNo: "1234556789",
+        school: "XYZ High School",
+        class: "12th Grade",
+        subjects: "Physics, Chemistry, Biology, English",
+        rollNo: "12456",
+        result: "Fail",
+        feesPaid: 6000,
+        dues: 1500,
+        password: "password456"
+    }
+};
+
+function login() {
+    const studentId = document.getElementById('studentId').value.trim();
+    const password = document.getElementById('password').value.trim();
+
+    // if (studentsData[studentId] && studentsData[studentId].password === password) {
+    //     const student = studentsData[studentId];
+
+        document.getElementById('studentDetails').style.display = 'block';
+        document.getElementById('loginForm').style.display = 'none';
+
+        document.getElementById('detailName').textContent = student.name;
+        document.getElementById('detailFatherName').textContent = student.fatherName;
+        document.getElementById('detailContactNo').textContent = student.contactNo;
+        document.getElementById('detailSchool').textContent = student.school;
+        document.getElementById('detailClass').textContent = student.class;
+        document.getElementById('detailSubjects').textContent = student.subjects;
+        document.getElementById('detailRollNo').textContent = student.rollNo;
+        document.getElementById('detailResult').textContent = student.result;
+        document.getElementById('detailFeesPaid').textContent = student.feesPaid;
+        document.getElementById('detailDues').textContent = student.dues;
+        document.getElementById('detailTotalFees').textContent = student.feesPaid + student.dues;
+
+        document.getElementById('studentId').value = '';
+        document.getElementById('password').value = '';
+    // } else {
+    //     alert("Invalid Student ID or Password. Please try again.");
+    // }
+}
+
+function logout() {
+    document.getElementById('studentDetails').style.display = 'none';
+    document.getElementById('loginForm').style.display = 'block';
+    document.getElementById('studentId').value = '';
+    document.getElementById('password').value = '';
+    alert("You have successfully logged out.");
+}
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

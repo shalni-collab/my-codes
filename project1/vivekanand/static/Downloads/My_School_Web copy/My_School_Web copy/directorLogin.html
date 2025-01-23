@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Director Login</title>
+
+    <!-- Fav Icon is here -->
+  <link rel="shortcut icon" href="imagesSchool/shchool Logo.png" type="images/x-icon" />
+
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="details.css">
+    <link rel="stylesheet" href="style2.css">
+</head>
+
+<body>
+    <!-- Navbar (Hidden Initially) -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="display:none;" id="navbarSection">
+        <div class="container">
+          <a class="navbar-brand" id="navbar-brand" href="index.html"><img class=" myLogo rounded-circle" height="60px" src="imagesSchool/logo2.jpg" alt="Vivekanand VIdhya Vihar"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="event.html">Events</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Account
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="stuLogin.html">Student List</a></li>
+                  <li><a class="dropdown-item" href="teacherLogin.html">Teacher List</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <div class="container mt-5 pt-5">
+        <h1 class="formHeading">Director Login</h1>
+
+        <!-- Login Form -->
+        <div id="loginForm" class="card">
+            <div class="card-body">
+                <label for="directorId">Email Id:</label>
+                <input type="email" id="directorId" name="directorId" placeholder="Enter your Email" class="form-control" />
+
+                <label for="password">Enter Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" class="form-control" />
+
+                <div class="button-container">
+                    <button type="button" class="btn btn-primary" onclick="login3()">Login</button>
+                </div>
+
+                <p class="forgetSignUp">
+                    <span class="forgot-password" onclick="alert('Forgot Password feature not implemented yet!')">Forgot Password?</span>
+                    <span class="forgot-password"><a href="directorSignUp.html">Sign Up</a></span>
+                    <span class="MyHome"><a href="index.html">Go Home</a></span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Director Details Section -->
+        <div id="directorDetails" class="director-details" style="display: none;">
+            <h2>Director Details</h2>
+            <ul class="list-group">
+                <li class="list-group-item"><strong>Name:</strong> <span id="detailName"></span></li>
+                <li class="list-group-item"><strong>School/College:</strong> <span id="detailSchool"></span></li>
+                <li class="list-group-item"><strong>Position:</strong> <span id="detailPosition"></span></li>
+                <li class="list-group-item"><strong>Salary:</strong> ₹<span id="detailSalary"></span></li>
+                <li class="list-group-item"><strong>Total Compensation:</strong> ₹<span id="detailTotalCompensation"></span></li>
+                <li class="list-group-item"><strong>Qualification:</strong> <span id="detailQualification"></span></li>
+                <li class="list-group-item"><strong>Contact Number:</strong> <span id="detailContactNo"></span></li>
+                <li class="list-group-item"><strong>Email ID:</strong> <span id="detailEmailId"></span></li>
+                <li class="list-group-item"><strong>Address:</strong> <span id="detailAddress"></span></li>
+                <li class="list-group-item"><strong>Identity Number:</strong> <span id="detailIdentity"></span></li>
+            </ul>
+
+            <div class="button-container mt-3">
+                <button class="btn btn-danger" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Simulate login and display director details
+        function login3() {
+            const directorData = {
+                name: "Jane Smith",
+                school: "XYZ University",
+                position: "Director",
+                salary: "120000",
+                totalCompensation: "140000",
+                qualification: "Ph.D. in Educational Leadership",
+                contactNo: "+91 9876543210",
+                emailId: "jane.smith@xyzuniversity.com",
+                address: "123, Oak Street, City, Country",
+                identity: "D12345"
+            };
+
+            // Populate director details in the page
+            document.getElementById("detailName").innerText = directorData.name;
+            document.getElementById("detailSchool").innerText = directorData.school;
+            document.getElementById("detailPosition").innerText = directorData.position;
+            document.getElementById("detailSalary").innerText = directorData.salary;
+            document.getElementById("detailTotalCompensation").innerText = directorData.totalCompensation;
+            document.getElementById("detailQualification").innerText = directorData.qualification;
+            document.getElementById("detailContactNo").innerText = directorData.contactNo;
+            document.getElementById("detailEmailId").innerText = directorData.emailId;
+            document.getElementById("detailAddress").innerText = directorData.address;
+            document.getElementById("detailIdentity").innerText = directorData.identity;
+
+            // Hide the login form and show the director details and navbar
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("directorDetails").style.display = "block";
+            document.getElementById("navbarSection").style.display = "block"; // Show the navbar after login
+        }
+
+        // Logout function to show the login form again
+        function logout() {
+            document.getElementById("loginForm").style.display = "block";
+            document.getElementById("directorDetails").style.display = "none";
+            document.getElementById("navbarSection").style.display = "none"; // Hide the navbar when logged out
+        }
+    </script>
+</body>
+
+</html>

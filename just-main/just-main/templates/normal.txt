@@ -1,0 +1,32 @@
+<button type="button" class="btn btn-primary upo" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">upload from here</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+    <form action="." method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-lg btn-success">Upload</button>
+        </form>
+      
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+//succen
+
+  {% if obj %}
+  <h3>Succesfully uploaded : {{img_obj.caption}}</h3>
+  
+  
+  <img src="{{ obj.image.url}}" alt="image" class="img-thumbnail" >
+  <a href="/blog" type="submit" class="btn btn-danger" > go back </a>
+  {% endif %}
+    
